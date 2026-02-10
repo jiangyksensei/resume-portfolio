@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Illustration - Style 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #eef0ff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .illustration {
+            width: 500px;
+            height: 280px;
+            position: relative;
+        }
+        /* Desk surface - rounded modern style */
+        .desk {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 460px;
+            height: 12px;
+            background: linear-gradient(180deg, #0b2e5a 0%, #1a3d6b 100%);
+            border-radius: 24px;
+        }
+        /* Modern curved legs */
+        .desk-support {
+            position: absolute;
+            bottom: 44px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 380px;
+            height: 80px;
+            border: 8px solid #0b2e5a;
+            border-top: none;
+            border-radius: 0 0 40px 40px;
+        }
+        /* Chair */
+        .chair {
+            position: absolute;
+            bottom: 44px;
+            left: 100px;
+        }
+        .chair-back {
+            width: 56px;
+            height: 72px;
+            background: #c9d2ff;
+            border-radius: 12px;
+            position: relative;
+        }
+        .chair-seat {
+            position: absolute;
+            top: 56px;
+            left: -8px;
+            width: 72px;
+            height: 32px;
+            background: #c9d2ff;
+            border-radius: 12px 12px 8px 8px;
+        }
+        /* Person sitting */
+        .person {
+            position: absolute;
+            bottom: 92px;
+            left: 108px;
+        }
+        .head {
+            width: 48px;
+            height: 48px;
+            background: #f4c2a3;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+        .hair {
+            position: absolute;
+            top: -6px;
+            left: -2px;
+            width: 52px;
+            height: 40px;
+            background: #1c2230;
+            border-radius: 26px 26px 0 0;
+        }
+        .torso {
+            position: absolute;
+            top: 38px;
+            left: -16px;
+            width: 80px;
+            height: 64px;
+            background: #6b8cce;
+            border-radius: 20px 20px 8px 8px;
+        }
+        .arm-right {
+            position: absolute;
+            top: 50px;
+            left: 52px;
+            width: 60px;
+            height: 11px;
+            background: #6b8cce;
+            border-radius: 6px;
+            transform: rotate(8deg);
+        }
+        .hand-right {
+            position: absolute;
+            top: -2px;
+            right: -8px;
+            width: 15px;
+            height: 15px;
+            background: #f4c2a3;
+            border-radius: 50%;
+        }
+        /* Laptop - modern slim design */
+        .laptop {
+            position: absolute;
+            bottom: 44px;
+            left: 240px;
+        }
+        .laptop-screen {
+            width: 120px;
+            height: 80px;
+            background: #1c2230;
+            border-radius: 6px;
+            border: 4px solid #0b2e5a;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(11, 46, 90, 0.2);
+        }
+        .screen-content {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            background: linear-gradient(135deg, #c9d2ff 0%, #a5b4e8 50%, #8b9dd8 100%);
+            border-radius: 3px;
+        }
+        .laptop-keyboard {
+            position: absolute;
+            top: 80px;
+            left: -12px;
+            width: 144px;
+            height: 10px;
+            background: #1c2230;
+            border-radius: 2px;
+        }
+        /* Books stack */
+        .books {
+            position: absolute;
+            bottom: 44px;
+            right: 60px;
+        }
+        .book-1 {
+            width: 48px;
+            height: 8px;
+            background: #c9d2ff;
+            border-radius: 1px;
+            position: relative;
+        }
+        .book-2 {
+            width: 44px;
+            height: 8px;
+            background: #6b8cce;
+            border-radius: 1px;
+            margin-top: 1px;
+            margin-left: 2px;
+        }
+        .book-3 {
+            width: 40px;
+            height: 8px;
+            background: #0b2e5a;
+            border-radius: 1px;
+            margin-top: 1px;
+            margin-left: 4px;
+        }
+        /* Minimalist plant */
+        .plant-minimal {
+            position: absolute;
+            bottom: 44px;
+            left: 60px;
+        }
+        .pot-minimal {
+            width: 28px;
+            height: 24px;
+            background: #c9d2ff;
+            border-radius: 4px;
+            position: relative;
+        }
+        .stem {
+            position: absolute;
+            top: -20px;
+            left: 12px;
+            width: 4px;
+            height: 24px;
+            background: #6fa885;
+            border-radius: 2px;
+        }
+        .leaves {
+            position: absolute;
+            top: -28px;
+            left: 8px;
+            width: 12px;
+            height: 12px;
+            background: #5a8a6e;
+            border-radius: 50% 0;
+            transform: rotate(-45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="illustration">
+        <!-- Desk structure -->
+        <div class="desk-support"></div>
+        <div class="desk"></div>
+
+        <!-- Chair -->
+        <div class="chair">
+            <div class="chair-back"></div>
+            <div class="chair-seat"></div>
+        </div>
+
+        <!-- Person -->
+        <div class="person">
+            <div class="hair"></div>
+            <div class="head"></div>
+            <div class="torso"></div>
+            <div class="arm-right">
+                <div class="hand-right"></div>
+            </div>
+        </div>
+
+        <!-- Laptop -->
+        <div class="laptop">
+            <div class="laptop-screen">
+                <div class="screen-content"></div>
+            </div>
+            <div class="laptop-keyboard"></div>
+        </div>
+
+        <!-- Books -->
+        <div class="books">
+            <div class="book-1"></div>
+            <div class="book-2"></div>
+            <div class="book-3"></div>
+        </div>
+
+        <!-- Plant -->
+        <div class="plant-minimal">
+            <div class="stem"></div>
+            <div class="leaves"></div>
+            <div class="pot-minimal"></div>
+        </div>
+    </div>
+</body>
+</html>

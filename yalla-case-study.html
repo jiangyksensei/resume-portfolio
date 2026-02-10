@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yalla 全链路体验数字化治理与增长实战 - 蒋云凯作品集</title>
+
+    <!-- Mermaid.js -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                // 主题色 - 紫色系
+                primaryColor: '#F3F4F6',           // 浅灰色背景
+                primaryTextColor: '#000000',       // 黑色文字
+                primaryBorderColor: '#9CA3AF',     // 灰色边框
+
+                // 次要色
+                secondaryColor: '#DBEAFE',         // 浅蓝色
+                secondaryTextColor: '#000000',
+                secondaryBorderColor: '#3B82F6',
+
+                // 第三色
+                tertiaryColor: '#D1FAE5',          // 浅绿色
+                tertiaryTextColor: '#000000',
+                tertiaryBorderColor: '#10B981',
+
+                // 线条和箭头
+                lineColor: '#9CA3AF',              // 中灰色线条
+                arrowheadColor: '#9CA3AF',
+
+                // 节点样式
+                mainBkg: '#F3F4F6',
+                nodeBorder: '#9CA3AF',
+                clusterBkg: '#FAFAFA',
+                clusterBorder: '#E5E7EB',
+
+                // 文字
+                textColor: '#000000',
+                fontSize: '14px',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif',
+
+                // 特殊颜色
+                errorBkgColor: '#FEE2E2',
+                errorTextColor: '#000000',
+
+                // 成功/警告色
+                successBkgColor: '#D1FAE5',
+                successBorderColor: '#10B981',
+                warningBkgColor: '#FEF3C7',
+                warningBorderColor: '#F59E0B'
+            },
+            flowchart: {
+                nodeSpacing: 50,
+                rankSpacing: 60,
+                curve: 'basis',
+                padding: 15
+            }
+        });
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --bg: #ffffff;
+            --panel: #eef0ff;
+            --panel-soft: #f7f8ff;
+            --text: #1c2230;
+            --ink: #0b1f3a;
+            --muted: #5f6a7a;
+            --highlight: #c9d2ff;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 26px 80px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .logo strong {
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            display: inline-block;
+            padding: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--ink);
+            z-index: -1;
+            transition: all 0.3s;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .nav-menu a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Hero Section */
+        .case-hero {
+            background: #E5E7EB;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 160px 80px 80px;
+            color: var(--ink);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-breadcrumb {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-breadcrumb a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .hero-breadcrumb a:hover {
+            color: var(--ink);
+        }
+
+        .case-hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            color: var(--ink);
+        }
+
+        .case-hero .subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 36px;
+            color: var(--muted);
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 44px;
+            flex-wrap: wrap;
+        }
+
+        .hero-tag {
+            padding: 6px 16px;
+            background: #5261F4;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 0;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        /* Section通用样式 */
+        section {
+            padding: 100px 80px;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #9CA3AF;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title .highlight {
+            color: #000;
+            background: linear-gradient(transparent 60%, #FFD93D 60%);
+            padding: 0 4px;
+        }
+
+        /* 内容样式 */
+        .content-block {
+            margin-bottom: 60px;
+        }
+
+        .content-block h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        .content-block h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            margin-top: 50px;
+            color: #000;
+        }
+
+        .content-block h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            color: #000;
+        }
+
+        .content-block p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #4B5563;
+            margin-bottom: 20px;
+        }
+
+        .content-block ul, .content-block ol {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .content-block li {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #4B5563;
+            margin-bottom: 12px;
+        }
+
+        .content-block strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* 高亮框 */
+        .highlight-box {
+            background: #F3F4F6;
+            padding: 30px 40px;
+            margin: 40px 0;
+            border-left: 4px solid #5261F4;
+        }
+
+        .highlight-box.warning {
+            background: #FEF3C7;
+            border-left-color: #F59E0B;
+        }
+
+        .highlight-box.success {
+            background: #D1FAE5;
+            border-left-color: #10B981;
+        }
+
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 14px;
+        }
+
+        thead {
+            background: #F9FAFB;
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #000;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        td {
+            padding: 16px;
+            color: #4B5563;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+
+        /* 核心成果指标区域 */
+        .results-section {
+            background: #F5F6FA;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 50px 0 10px;
+        }
+
+        .metric-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px 16px;
+            background: #ffffff;
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .metric-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #DDDDF8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .metric-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #4F4FC8;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #5261F4;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #1c2230;
+            font-weight: 500;
+            line-height: 1.4;
+            max-width: 240px;
+            margin-bottom: 12px;
+        }
+
+        .metric-change {
+            display: none;
+        }
+
+        /* 图片容器 */
+        .image-container {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #F3F4F6;
+        }
+
+        .image-caption {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #9CA3AF;
+            font-style: italic;
+        }
+
+        /* 数据可视化图片大小控制 */
+        .image-container.data-viz img {
+            max-width: 75%;
+            height: auto;
+        }
+
+        /* HEART热力图特殊控制 - 更小显示 */
+        .image-container.data-viz img[src*="1_heart_heatmap"] {
+            max-width: 60%;
+        }
+
+        /* HEART热力图容器 - 增加上下间距 */
+        .image-container.data-viz:has(img[src*="1_heart_heatmap"]) {
+            margin: 80px 0;
+        }
+
+        /* Mermaid 图表容器 */
+        .mermaid-container {
+            margin: 50px 0;
+            padding: 40px;
+            background: #FAFAFA;
+            border-radius: 4px;
+            overflow-x: auto;
+            border: 1px solid #F3F4F6;
+        }
+
+        /* Mermaid 图表样式优化 */
+        .mermaid-container .mermaid {
+            display: flex;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        /* Mermaid SVG 样式 */
+        .mermaid-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 优化 Mermaid 节点样式 */
+        .mermaid-container .node rect,
+        .mermaid-container .node circle,
+        .mermaid-container .node polygon {
+            stroke-width: 2px !important;
+        }
+
+        /* 优化 Mermaid 文字 */
+        .mermaid-container .nodeLabel,
+        .mermaid-container .edgeLabel {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif !important;
+            font-weight: 600 !important;
+        }
+
+        /* 引用框 */
+        blockquote {
+            position: relative;
+            padding: 40px 50px 30px;
+            margin: 30px 0;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            font-style: italic;
+            color: #1c2230;
+        }
+
+        blockquote::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 48px;
+            font-weight: 700;
+            color: #5261F4;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        blockquote::after {
+            content: '"';
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+            font-size: 48px;
+            font-weight: 700;
+            color: #5261F4;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        blockquote p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #9CA3AF;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+
+        /* 标签组 */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tag {
+            padding: 6px 16px;
+            background: #B8B8F0;
+            color: #000;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 0;
+        }
+
+        /* 能力矩阵 */
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .capability-item {
+            padding: 24px;
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .capability-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .capability-item h3 {
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #1c2230;
+            font-weight: 700;
+        }
+
+        .capability-item p {
+            margin-bottom: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #5f6a7a;
+        }
+
+        .capability-item .case-label {
+            margin-top: 12px;
+            font-weight: 700;
+            color: #000;
+            font-size: 14px;
+        }
+
+        .capability-item .case-data {
+            font-weight: 400;
+            color: #5f6a7a;
+        }
+
+        /* 返回按钮 */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            background: #333;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 80px;
+            text-align: center;
+            background: #FAFAFA;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            header {
+                padding: 25px 30px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .case-hero {
+                padding: 140px 30px 60px;
+            }
+
+            .case-hero h1 {
+                font-size: 38px;
+            }
+
+            .case-hero .subtitle {
+                font-size: 18px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            section {
+                padding: 60px 30px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .content-block h2 {
+                font-size: 28px;
+            }
+
+            .content-block h3 {
+                font-size: 22px;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capability-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.copy.html" class="logo"><strong>YUNKAI</strong> JIANG</a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.copy.html">返回首页</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Case Hero -->
+    <section class="case-hero">
+        <div class="hero-container">
+            <h1>Yalla 全链路体验数字化<br>治理与增长实战</h1>
+            <p class="subtitle">基于混合研究方法的体验诊断与策略设计</p>
+
+            <div class="hero-tags">
+                <span class="hero-tag">体验度量体系搭建</span>
+                <span class="hero-tag">混合研究方法</span>
+                <span class="hero-tag">数据驱动决策</span>
+                <span class="hero-tag">跨职能推动</span>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-label">我的角色</span>
+                    <span class="stat-value">用户体验/用户研究负责人</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-label">团队规模</span>
+                    <span class="stat-value">50+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心成果 -->
+    <section id="results">
+        <div class="section-container">
+            <div class="section-label">Key Results</div>
+            <h2 class="section-title">核心<span class="highlight">成果</span></h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card increase">
+                    <div class="metric-label">VIP用户ARPU</div>
+                    <div class="metric-value">↑ 12%</div>
+                    <div class="metric-change">商业价值指标</div>
+                </div>
+                <div class="metric-card increase">
+                    <div class="metric-label">月度营收贡献</div>
+                    <div class="metric-value">↑ 13%</div>
+                    <div class="metric-change">商业价值指标</div>
+                </div>
+                <div class="metric-card increase">
+                    <div class="metric-label">引入期转化率</div>
+                    <div class="metric-value">↑ 96%</div>
+                    <div class="metric-change">5.2% → 10.2%</div>
+                </div>
+                <div class="metric-card increase">
+                    <div class="metric-label">成长期参与率</div>
+                    <div class="metric-value">↑ 150%</div>
+                    <div class="metric-change">18% → 45%</div>
+                </div>
+                <div class="metric-card decrease">
+                    <div class="metric-label">VIP流失率</div>
+                    <div class="metric-value">↓ 42%</div>
+                    <div class="metric-change">运营效率提升</div>
+                </div>
+                <div class="metric-card increase">
+                    <div class="metric-label">周均VIP召回</div>
+                    <div class="metric-value">350人</div>
+                    <div class="metric-change">召回成功率28%</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 项目背景 -->
+    <section id="overview">
+        <div class="section-container">
+            <div class="section-label">Project Background</div>
+            <h2 class="section-title">项目<span class="highlight">背景</span>与核心挑战</h2>
+
+            <div class="content-block">
+                <h3>关于 Yalla</h3>
+                <p>Yalla（NYSE: YALA）是中东及北非地区（MENA）领先的<strong>语音社交平台</strong>，将阿拉伯传统的议事厅（Majlis）文化数字化。平台核心功能包括：</p>
+
+                <ul>
+                    <li><strong>多人语音房</strong>：用户可创建或加入多人语音聊天室，支持房主/管理员/麦上用户等角色分级，实现"围炉夜话"式的社交体验</li>
+                    <li><strong>虚拟礼物系统</strong>：提供200+特效礼物（从普通玫瑰到豪华游艇、城堡），送礼时触发全房间动画特效和音效，是平台主要变现手段</li>
+                    <li><strong>社交互动玩法</strong>：支持连麦PK、语音派对、多人游戏（Ludo、扑克等），以及基于礼物的榜单竞争机制</li>
+                </ul>
+
+                <p><strong>商业模式核心</strong>：2%的头部VIP用户贡献78%的平台营收</p>
+
+                <h3>介入时的核心困境</h3>
+                <p>当我接手项目时，Yalla虽然财报数据持续增长，但在体验层面处于<strong>"黑盒状态"</strong>：</p>
+
+                <div class="capability-grid">
+                    <div class="capability-item">
+                        <h3>困境1：体验度量断层</h3>
+                        <p>体验数据散落在不同看板，缺乏统一的衡量尺度。无法判定指标波动是"产品变好"还是"投放加大"。</p>
+                    </div>
+                    <div class="capability-item">
+                        <h3>困境2：服务断层</h3>
+                        <p>投放素材与产品实况存在出入（预期违约）。VIP客服缺乏数据支撑，无法在用户流失前及时介入。</p>
+                    </div>
+                </div>
+
+                <h3>我的研究目标</h3>
+                <ol>
+                    <li><strong>重塑监测体系</strong>：引入体验监控模型，实时感知用户体验健康度</li>
+                    <li><strong>锁定增长动力</strong>：运用统计工具量化核心行为对留存的影响权重</li>
+                    <li><strong>驱动策略闭环</strong>：将研究结论转化为可执行的产品优化与召回策略</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究框架 -->
+    <section id="framework">
+        <div class="section-container">
+            <div class="section-label">Research Framework</div>
+            <h2 class="section-title">研究<span class="highlight">框架</span></h2>
+
+            <div class="content-block">
+                <div class="image-container data-viz">
+                    <img src="images/7_research_cycle.png" alt="混合研究方法循环框架">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 0: HEART监控体系 -->
+    <section>
+        <div class="section-container">
+            <div class="section-label">Phase 0</div>
+            <h2 class="section-title">HEART <span class="highlight">体验监控</span>体系搭建</h2>
+
+            <div class="content-block">
+                <h3>为什么选择HEART而非其他模型？</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>框架</th>
+                            <th>局限性</th>
+                            <th>不适用原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PULSE</strong></td>
+                            <td>侧重系统性能（页面加载、服务器延迟）</td>
+                            <td>无法捕捉社交平台的情感体验</td>
+                        </tr>
+                        <tr>
+                            <td><strong>单一NPS</strong></td>
+                            <td>滞后性指标，只能事后诊断</td>
+                            <td>无法预警，等看到NPS下降时已损失用户</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AARRR</strong></td>
+                            <td>聚焦增长漏斗，缺乏体验深度</td>
+                            <td>只看转化数字，不看体验质量</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>HEART的独特优势</strong>：</p>
+                    <ul>
+                        <li>兼顾<strong>行为数据</strong>（E/A/R）与<strong>态度数据</strong>（H）</li>
+                        <li>具备<strong>领先预测能力</strong>：E指标下降可预警R指标即将恶化</li>
+                        <li><strong>可操作性强</strong>：每个维度都能对应具体的产品动作</li>
+                    </ul>
+                </div>
+
+                <h3>核心创新：HEART × 生命周期的双重加权模型</h3>
+                <p><strong>设计原则</strong>：让指标权重随业务动态调整，避免"平均数陷阱"</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>生命周期</th>
+                            <th>核心目标</th>
+                            <th>权重侧重</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>引入期</strong></td>
+                            <td>完成首次转化</td>
+                            <td>A（接受度）60%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>成长期</strong></td>
+                            <td>养成使用习惯</td>
+                            <td>E（参与度）50%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>成熟期</strong></td>
+                            <td>维持VIP忠诚</td>
+                            <td>H（愉悦度）60%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>衰退期</strong></td>
+                            <td>流失预警召回</td>
+                            <td>R（留存度）40%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="image-container data-viz">
+                    <img src="images/1_heart_heatmap.png" alt="HEART权重分布矩阵">
+                    <p class="image-caption">图1: HEART指标在用户生命周期各阶段的权重分布热力图</p>
+                </div>
+
+                <p><strong>设计价值</strong>：当核心VIP用户（成熟期）的H指标出现5%细微扰动，系统能精准捕捉并预警，而不是被其他阶段的杂音抵消。</p>
+
+                <h3>HEART 综合分数计算</h3>
+                <p>基于双重加权模型，我设计了两级加权算法来计算整体体验健康度：</p>
+
+                <h4>第一级：阶段内加权（已展示于上表）</h4>
+                <p>每个生命周期阶段内，根据业务目标对 HEART 各维度赋予不同权重，计算该阶段的体验分数（0-100分）。</p>
+
+                <h4>第二级：阶段间加权</h4>
+                <p>根据业务价值和用户分布，对各生命周期阶段赋予权重：</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>生命周期阶段</th>
+                            <th>业务价值</th>
+                            <th>阶段权重</th>
+                            <th>权重依据</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>成熟期</strong></td>
+                            <td>核心VIP用户，贡献78%营收</td>
+                            <td><strong>50%</strong></td>
+                            <td>最高优先级，直接影响商业表现</td>
+                        </tr>
+                        <tr>
+                            <td><strong>成长期</strong></td>
+                            <td>潜在VIP转化池</td>
+                            <td>25%</td>
+                            <td>中期增长动力</td>
+                        </tr>
+                        <tr>
+                            <td><strong>引入期</strong></td>
+                            <td>新用户获取</td>
+                            <td>15%</td>
+                            <td>长期用户池补充</td>
+                        </tr>
+                        <tr>
+                            <td><strong>衰退期</strong></td>
+                            <td>流失预警与召回</td>
+                            <td>10%</td>
+                            <td>止损与挽回</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>HEART 综合分数计算公式</strong>：</p>
+                    <p style="font-family: 'Courier New', monospace; background: #fff; padding: 15px; border-radius: 4px; margin: 15px 0;">
+                        HEART总分 = 成熟期分数 × 50% + 成长期分数 × 25% + 引入期分数 × 15% + 衰退期分数 × 10%
+                    </p>
+                </div>
+
+                <h4>健康度评级标准</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>分数区间</th>
+                            <th>健康度等级</th>
+                            <th>状态说明</th>
+                            <th>应对策略</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #D1FAE5;">
+                            <td><strong>90-100</strong></td>
+                            <td>🟢 优秀 (Excellent)</td>
+                            <td>体验健康，各项指标优异</td>
+                            <td>持续优化，保持领先</td>
+                        </tr>
+                        <tr style="background: #FEF3C7;">
+                            <td><strong>80-89</strong></td>
+                            <td>🟡 良好 (Good)</td>
+                            <td>整体稳定，局部有提升空间</td>
+                            <td>关注局部波动，预防性优化</td>
+                        </tr>
+                        <tr style="background: #FED7AA;">
+                            <td><strong>70-79</strong></td>
+                            <td>🟠 一般 (Fair)</td>
+                            <td>存在明显隐患</td>
+                            <td>定位问题根因，制定改进方案</td>
+                        </tr>
+                        <tr style="background: #FEE2E2;">
+                            <td><strong>60-69</strong></td>
+                            <td>🔴 较差 (Poor)</td>
+                            <td>多维度异常，影响业务</td>
+                            <td>紧急诊断，启动专项治理</td>
+                        </tr>
+                        <tr style="background: #E5E7EB;">
+                            <td><strong>&lt;60</strong></td>
+                            <td>⚫ 危险 (Critical)</td>
+                            <td>体验崩溃，用户大量流失</td>
+                            <td>立即行动，高层介入</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="margin-top: 30px;"><strong>实际应用案例</strong>：在2023年8月监控周期中，HEART综合分数为82.3（良好），但成熟期分数仅79.2（一般），触发了预警机制，帮助我们及时发现VIP活跃度下降的问题。</p>
+
+                <h3>各阶段指标细分与计分方式</h3>
+
+                <h4>引入期（Acquisition）—— 侧重"漏斗效率"</h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>指标内容与权重</th>
+                            <th>计分方式</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A (Adoption)</strong></td>
+                            <td>游客注册率(60%) + 新手任务完成率(40%)</td>
+                            <td>注册成功/总游客；首次上麦完成度</td>
+                        </tr>
+                        <tr>
+                            <td><strong>E (Engagement)</strong></td>
+                            <td>列表进房率(70%) + 首日送礼覆盖率(30%)</td>
+                            <td>Recommend点击/展示；领取新人礼包占比</td>
+                        </tr>
+                        <tr>
+                            <td><strong>H (Happiness)</strong></td>
+                            <td>新手礼包CSAT(100%)</td>
+                            <td>针对注册<3天用户的满意度调研</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>成长期（Activation）—— 侧重"社交习惯"</h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>指标内容与权重</th>
+                            <th>计分方式</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>E (Engagement)</strong></td>
+                            <td>在麦时长(70%) + 送礼转化率(30%)</td>
+                            <td>日均达120min为100分；送礼人数占比</td>
+                        </tr>
+                        <tr>
+                            <td><strong>A (Adoption)</strong></td>
+                            <td>金币游戏参与度(100%)</td>
+                            <td>游戏人均活跃次数</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>成熟期（Retention）—— 核心业务观测点（2%头部VIP聚集地）</h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>指标内容与权重</th>
+                            <th>计分方式</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>H (Happiness)</strong></td>
+                            <td>整体推荐NPS(100%)</td>
+                            <td>(推荐者%-贬损者%)映射至0-100</td>
+                        </tr>
+                        <tr>
+                            <td><strong>E (Engagement)</strong></td>
+                            <td>前台使用时长(60%) + 分享至外部次数(40%)</td>
+                            <td>日均时长对比历史基准值</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R (Retention)</strong></td>
+                            <td>社交资产厚度(70%) + VIP保级率(30%)</td>
+                            <td>核心好友数增量及互动深度；维持VIP等级行为</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>衰退期（Churn）—— 侧重"流失挽回"</h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>指标内容与权重</th>
+                            <th>计分方式</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>R (Retention)</strong></td>
+                            <td>沉默天数(80%) + 卸载率(20%)</td>
+                            <td>连续不活跃天数触发阈值的百分比</td>
+                        </tr>
+                        <tr>
+                            <td><strong>E (Engagement)</strong></td>
+                            <td>互动频率衰减率(100%)</td>
+                            <td>(本周送礼-上周均值)/上周均值</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>实时监控看板与预警机制</h3>
+
+                <div class="image-container">
+                    <img src="images/heart截图.png" alt="HEART监控看板">
+                    <p class="image-caption">HEART体验监控看板 - 实时监控各生命周期阶段的体验健康度</p>
+                </div>
+
+                <p>HEART监控体系通过<strong>Z-Score异常检测</strong>，在项目运行的第2个月触发了两个关键预警：</p>
+
+                <ul style="margin: 30px 0;">
+                    <li style="margin-bottom: 20px;">
+                        <strong>预警1：引入期A指标异常</strong><br>
+                        新用户转化率降至5.2%，偏离行业基准达3个标准差 → 触发<strong>Phase 1a 新用户转化诊断</strong>
+                    </li>
+                    <li>
+                        <strong>预警2：成熟期H/E指标异常</strong><br>
+                        VIP活跃度环比下降35%，NPS持续低位，30天内流失风险上升15% → 触发<strong>Phase 1b VIP活跃度诊断</strong>
+                    </li>
+                </ul>
+
+                <p>这两个预警成为后续定量诊断的起点，确保研究资源精准投入到最关键的问题上。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 1: 定量诊断 -->
+    <section>
+        <div class="section-container">
+            <div class="section-label">Phase 1</div>
+            <h2 class="section-title">定量<span class="highlight">诊断</span> - 双线锁定关键变量</h2>
+
+            <div class="content-block">
+                <h3>研究1a：新用户转化诊断</h3>
+                <p><strong>触发来源</strong>：HEART预警 - 引入期A指标异常（转化率5.2%）</p>
+                <p><strong>数据来源</strong>：23,847名新注册用户（2023年6-8月）</p>
+                <p><strong>分析方法</strong>：SPSS多元线性回归</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>变量名称</th>
+                            <th>β系数</th>
+                            <th>P值</th>
+                            <th>解释</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>推广素材匹配度</strong></td>
+                            <td><strong>-0.72</strong></td>
+                            <td>&lt;0.001***</td>
+                            <td>负相关最强 ⚠️</td>
+                        </tr>
+                        <tr>
+                            <td>首日房间停留时长</td>
+                            <td>0.48</td>
+                            <td>&lt;0.001***</td>
+                            <td>显著正相关</td>
+                        </tr>
+                        <tr>
+                            <td>新手任务完成度</td>
+                            <td>0.18</td>
+                            <td>0.008**</td>
+                            <td>中等影响</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>核心发现</strong>：审计发现投放侧使用了包含"虚假3D角色"、"提现诱导"的素材。用户进场后的认知失调是导致5.2%转化冰点的元凶。</p>
+
+                <h3>研究1b：VIP活跃度诊断</h3>
+                <p><strong>触发来源</strong>：HEART预警 - 成熟期H/E指标异常（VIP活跃度↓35%）</p>
+                <p><strong>数据来源</strong>：Top 5% VIP用户行为数据（N=1,200）</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>变量名称</th>
+                            <th>β系数</th>
+                            <th>P值</th>
+                            <th>解释</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>社交新鲜度指数</strong></td>
+                            <td><strong>0.54</strong></td>
+                            <td>&lt;0.001***</td>
+                            <td>显著正相关</td>
+                        </tr>
+                        <tr>
+                            <td>送礼玩法多样性</td>
+                            <td>0.47</td>
+                            <td>&lt;0.001***</td>
+                            <td>显著正相关</td>
+                        </tr>
+                        <tr>
+                            <td>房间内容丰富度</td>
+                            <td>0.32</td>
+                            <td>0.003**</td>
+                            <td>中等影响</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>核心发现</strong>：VIP用户对现有送礼/互动玩法产生边际效用递减，社交新鲜度与活跃度呈显著正相关。</p>
+
+                <div class="image-container data-viz">
+                    <img src="images/3_regression_results.png" alt="回归分析结果">
+                    <p class="image-caption">图2: Phase 1 定量诊断 - 双线回归分析结果对比（R²=0.68 & R²=0.61, p&lt;0.001）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 2: 定性探索 -->
+    <section>
+        <div class="section-container">
+            <div class="section-label">Phase 2</div>
+            <h2 class="section-title">定性<span class="highlight">探索</span> - 深挖用户心智</h2>
+
+            <div class="content-block">
+                <h3>研究设计</h3>
+                <p><strong>方法</strong>：半结构化深度访谈 + 扎根理论编码（NVivo）</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>用户分群</th>
+                            <th>样本量</th>
+                            <th>筛选标准</th>
+                            <th>对应Phase 1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>快速流失组</td>
+                            <td>5人</td>
+                            <td>注册后&lt;24h卸载</td>
+                            <td>1a：新用户转化</td>
+                        </tr>
+                        <tr>
+                            <td>VIP流失预警组</td>
+                            <td>8人</td>
+                            <td>近30天送礼额↓50%</td>
+                            <td>1b：VIP活跃度</td>
+                        </tr>
+                        <tr>
+                            <td>成长期沉默组</td>
+                            <td>7人</td>
+                            <td>注册14-30天，进房&gt;30min/日，上麦率&lt;5%</td>
+                            <td>额外发现</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>关键洞察</h3>
+
+                <blockquote>
+                    <p>"广告里有3D角色和提现功能，我就是冲着这个来的。结果进来发现都没有，感觉被骗了，马上就卸载了。"</p>
+                    <cite>—— 快速流失用户#3，使用时长8分钟</cite>
+                </blockquote>
+
+                <blockquote>
+                    <p>"每天送礼就那几个特效，送完就没了，没什么意思了。要是能有点新玩法，比如送礼能中奖什么的，会更有动力。"</p>
+                    <cite>—— VIP用户#12</cite>
+                </blockquote>
+
+                <blockquote>
+                    <p>"我每天都在房间听，也很想参与，但我阿语不太好，怕一开口就被嘲笑。能不能有不用说话也能互动的方式？"</p>
+                    <cite>—— 沉默用户#7，注册12天</cite>
+                </blockquote>
+
+                <h3>NVivo三级编码结论</h3>
+                <p>基于20人深度访谈的逐句编码，通过<strong>开放编码→主轴编码→选择性编码</strong>三级归纳，提炼出3个核心范畴：</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>编码层级</th>
+                            <th>范畴1：预期违背伤害</th>
+                            <th>范畴2：玩法疲劳</th>
+                            <th>范畴3：社交破冰困境</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>开放编码</strong></td>
+                            <td>虚假返利承诺、3D角色缺失、提现功能不存在、广告夸大</td>
+                            <td>送礼特效重复、互动模式单一、缺乏随机惊喜、社交玩法固化</td>
+                            <td>语言障碍焦虑、上麦恐惧、圈子固化排外、缺乏非语音互动</td>
+                        </tr>
+                        <tr>
+                            <td><strong>主轴编码</strong></td>
+                            <td>广告-产品预期断裂 → 信任破碎 → 认知失调</td>
+                            <td>边际效用递减 → 新鲜感枯竭 → 付费动力丧失</td>
+                            <td>表达门槛过高 → 参与方式单一 → 社交孤立</td>
+                        </tr>
+                        <tr>
+                            <td><strong>选择性编码</strong></td>
+                            <td>首次体验的<strong>信任契约</strong>被破坏</td>
+                            <td>核心玩法的<strong>情感价值</strong>被耗尽</td>
+                            <td>社交参与的<strong>准入门槛</strong>被抬高</td>
+                        </tr>
+                        <tr>
+                            <td><strong>编码频次</strong></td>
+                            <td>23次（流失用户访谈）</td>
+                            <td>27次（VIP用户访谈）</td>
+                            <td>31次（沉默用户访谈）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>对应用户群</strong></td>
+                            <td>引入期新用户</td>
+                            <td>成熟期VIP用户</td>
+                            <td>成长期沉默用户</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>核心悖论</strong>：三类问题的本质都不是功能缺陷，而是<strong>体验期望与现实的错配</strong>——</p>
+                    <ul>
+                        <li><strong>新用户流失</strong>：不是产品不好，而是"承诺被辜负"</li>
+                        <li><strong>VIP活跃下降</strong>：不是不想玩，而是"玩法被耗尽"</li>
+                        <li><strong>沉默用户沉默</strong>：不是不想社交，而是"不敢开口"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3: Kano验证 -->
+    <section>
+        <div class="section-container">
+            <div class="section-label">Phase 3</div>
+            <h2 class="section-title">Kano模型<span class="highlight">定量验证</span></h2>
+
+            <div class="content-block">
+                <h3>洞察普遍性验证</h3>
+                <p><strong>样本量</strong>：2,030份有效问卷（95%置信度，±3%误差）</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>定性洞察</th>
+                            <th>验证问题</th>
+                            <th>验证结果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>预期违约伤害</td>
+                            <td>"下载前看到的广告内容与实际产品一致吗？"（1-5分）</td>
+                            <td><strong>63%用户评分≤2分</strong></td>
+                        </tr>
+                        <tr>
+                            <td>玩法疲劳</td>
+                            <td>"你是否觉得现有的送礼/互动玩法缺乏新鲜感？"</td>
+                            <td><strong>VIP用户中71%选择"是"</strong></td>
+                        </tr>
+                        <tr>
+                            <td>社交破冰困境</td>
+                            <td>"你是否因为担心语言/氛围问题而不敢上麦？"</td>
+                            <td><strong>77%沉默用户选择"是"</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Kano功能属性分析</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>测试功能</th>
+                            <th>Better系数</th>
+                            <th>Worse系数</th>
+                            <th>属性归类</th>
+                            <th>解读</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>爆奖礼物</td>
+                            <td><strong>0.78</strong></td>
+                            <td>-0.12</td>
+                            <td>魅力属性</td>
+                            <td>不做没关系，做了爽感极强</td>
+                        </tr>
+                        <tr>
+                            <td>弹幕游戏</td>
+                            <td>0.65</td>
+                            <td>-0.28</td>
+                            <td>魅力属性</td>
+                            <td>解决非麦用户痛点</td>
+                        </tr>
+                        <tr>
+                            <td>素材真实化</td>
+                            <td>0.32</td>
+                            <td><strong>-0.85</strong></td>
+                            <td>必备属性</td>
+                            <td>没有会严重不满</td>
+                        </tr>
+                        <tr>
+                            <td>一键充值</td>
+                            <td>0.68</td>
+                            <td>-0.72</td>
+                            <td>期望属性</td>
+                            <td>做得越好越满意</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box" style="background: #FFF9E6; border-left-color: #F59E0B; margin: 40px 0;">
+                    <p style="margin-bottom: 15px;"><strong>💡 分析师笔记 (Analyst Note)</strong></p>
+                    <p style="margin-bottom: 0;">在属性归类时，我引入了 <strong>Better-Worse系数绝对值</strong> 作为校准维度。虽然"爆奖礼物"的物理坐标接近一维属性区，但其 <strong>Worse系数 = -0.12</strong>（绝对值极低），意味着该功能缺失时用户几乎无负面感知。基于"<strong>有则惊喜，无则无伤</strong>"的实战逻辑，将其修正定义为<strong>魅力属性 (Attractive)</strong>，确立为增长抓手。</p>
+                </div>
+
+                <div class="image-container data-viz">
+                    <img src="images/4_kano_analysis.png" alt="Kano功能属性分析">
+                    <p class="image-caption">图3: Kano功能属性分析 - Better/Worse四象限散点图</p>
+                </div>
+
+                <h3>开发优先级排序</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>优先级</th>
+                            <th>功能</th>
+                            <th>Kano属性</th>
+                            <th>决策依据</th>
+                            <th>执行周期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>P0</strong></td>
+                            <td>素材真实化</td>
+                            <td>必备</td>
+                            <td>Worse=-0.85，立即修复</td>
+                            <td>Week 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P1</strong></td>
+                            <td>爆奖礼物</td>
+                            <td>魅力</td>
+                            <td>Better=0.78，ROI最高</td>
+                            <td>Week 2-4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P2</strong></td>
+                            <td>弹幕游戏</td>
+                            <td>魅力</td>
+                            <td>Better=0.65，填补空白</td>
+                            <td>Week 5-6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 4: 方案落地 -->
+    <section>
+        <div class="section-container">
+            <div class="section-label">Phase 4</div>
+            <h2 class="section-title">方案<span class="highlight">落地</span>与VIP召回体系</h2>
+
+            <div class="content-block">
+                <h3>方案A：投放素材净化（P0）</h3>
+                <p><strong>对应洞察</strong>：预期违约伤害（63%用户感到被骗）</p>
+
+                <div class="highlight-box">
+                    <p><strong>落地动作</strong>：</p>
+                    <ul>
+                        <li>与投放团队建立素材审核SOP</li>
+                        <li>强制下线96条虚假素材</li>
+                        <li>仅保留真实场景素材</li>
+                    </ul>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>对照组</th>
+                            <th>实验组</th>
+                            <th>变化</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>转化率</td>
+                            <td>5.2%</td>
+                            <td>10.2%</td>
+                            <td><strong>↑ 96%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>"被骗"投诉率</td>
+                            <td>63%</td>
+                            <td>14%</td>
+                            <td>↓ 78%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>方案B：爆奖礼物系统（P1）</h3>
+                <p><strong>对应洞察</strong>：玩法疲劳 + 新社交游戏渴望（71% VIP期待新玩法）</p>
+                <p><strong>机制设计</strong>：引入"随机比率强化"心理学机制</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>灰度前</th>
+                            <th>灰度后</th>
+                            <th>提升</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>VIP日均送礼频次</td>
+                            <td>2.1次</td>
+                            <td>3.8次</td>
+                            <td>↑ 81%</td>
+                        </tr>
+                        <tr>
+                            <td>VIP ARPU</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><strong>↑ 12%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>触发爆奖后7日留存</td>
+                            <td>58%</td>
+                            <td>96%</td>
+                            <td>↑ 66%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="image-container data-viz">
+                    <img src="images/5_ab_test_results.png" alt="A/B测试结果">
+                    <p class="image-caption">图4: Phase 4 方案效果验证 - A/B测试及灰度测试结果</p>
+                </div>
+
+                <h3>方案C：弹幕游戏系统（P2）</h3>
+                <p><strong>对应洞察</strong>：社交破冰困境（77%沉默用户不敢上麦）</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>上线前</th>
+                            <th>上线后</th>
+                            <th>提升</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>成长期用户参与率</td>
+                            <td>18%</td>
+                            <td>45%</td>
+                            <td><strong>↑ 150%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>日均弹幕互动次数</td>
+                            <td>0</td>
+                            <td>128万次</td>
+                            <td>新增</td>
+                        </tr>
+                        <tr>
+                            <td>弹幕用户→上麦转化</td>
+                            <td>-</td>
+                            <td>23%</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>方案D：VIP流失预警与客服主动召回</h3>
+                <p>针对高价值VIP用户，我搭建并完善了主动召回体系，建立从<strong>风险识别、分级预警、触达召回到效果监控</strong>的全流程管理机制，并将上线的新功能（爆奖礼物、弹幕游戏）作为召回钩子融入召回话术。</p>
+
+                <div class="image-container">
+                    <img src="images/VIP召回系统截图.png" alt="VIP流失预警与召回系统">
+                    <p class="image-caption">VIP流失预警与召回系统 - 基于HEART监控的智能预警与客服主动介入机制</p>
+                </div>
+
+                <p><strong>召回流程设计</strong>：</p>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+graph TD
+    A[HEART监控识别流失风险] --> B{预警触发条件<br/>满足任一即触发}
+
+    B --> C1[Engagement下降30%+<br/>7日环比]
+    B --> C2[送礼金额下降50%+<br/>7日环比]
+    B --> C3[连续7天未登录]
+
+    C1 --> D[风险评级]
+    C2 --> D
+    C3 --> D
+
+    D --> E1[🟡 轻度风险]
+    D --> E2[🟠 中度风险]
+    D --> E3[🔴 重度风险]
+
+    E1 --> F1[系统自动Push<br/>文案: 你的爆奖池已满<br/>快来领取]
+
+    E2 --> F2[48h内VIP客服主动联系<br/>方式: WhatsApp外呼<br/>话术: 最近上线了爆奖玩法<br/>送礼有机会中大奖]
+
+    E3 --> F3[24h内客服主管介入<br/>提供定制化挽留方案<br/>专属福利、1对1服务]
+
+    F1 --> G[CRM记录, 持续跟踪]
+    F2 --> G
+    F3 --> G
+
+    style A fill:#e1f5ff
+    style D fill:#fff3e0
+    style E1 fill:#fff9c4
+    style E2 fill:#ffcc80
+    style E3 fill:#ef9a9a
+    style G fill:#c8e6c9
+                    </div>
+                </div>
+
+                <table style="margin: 40px 0;">
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">指标</th>
+                            <th style="width: 35%;">数据</th>
+                            <th style="width: 30%;">可视化</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>VIP流失率</strong></td>
+                            <td>15%/月 → 8.7%/月</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div style="width: 100px; height: 8px; background: #FEE2E2; border-radius: 4px; position: relative;">
+                                        <div style="width: 58%; height: 100%; background: #10B981; border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="color: #10B981; font-size: 13px; font-weight: 700;">↓ 42%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>周均召回VIP数</strong></td>
+                            <td>350人</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div style="width: 100px; height: 8px; background: #E5E7EB; border-radius: 4px; position: relative;">
+                                        <div style="width: 87%; height: 100%; background: #9CA3AF; border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="color: #4B5563; font-size: 13px; font-weight: 700;">87%目标</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>召回成功率</strong></td>
+                            <td>28%</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div style="width: 100px; height: 8px; background: #E5E7EB; border-radius: 4px; position: relative;">
+                                        <div style="width: 28%; height: 100%; background: #3B82F6; border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="color: #3B82F6; font-size: 13px; font-weight: 700;">28%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>召回用户7日留存</strong></td>
+                            <td>67%</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div style="width: 100px; height: 8px; background: #E5E7EB; border-radius: 4px; position: relative;">
+                                        <div style="width: 67%; height: 100%; background: #10B981; border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="color: #10B981; font-size: 13px; font-weight: 700;">67%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>客服主动介入满意度</strong></td>
+                            <td>4.5 / 5.0</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div style="width: 100px; height: 8px; background: #E5E7EB; border-radius: 4px; position: relative;">
+                                        <div style="width: 90%; height: 100%; background: #F59E0B; border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="color: #F59E0B; font-size: 13px; font-weight: 700;">⭐ 4.5</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <blockquote>
+                    <p><strong>关键洞察</strong>：将新功能作为召回钩子的效果远好于单纯的福利补贴。用户反馈："不是冲着优惠券回来的，是听说有新玩法想试试。"</p>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- 方法论价值 -->
+    <section>
+        <div class="section-container">
+            <div class="section-label">Methodology</div>
+            <h2 class="section-title">方法论<span class="highlight">价值</span></h2>
+
+            <div class="content-block">
+                <div class="image-container data-viz">
+                    <img src="images/7_research_framework.png" alt="混合研究方法框架">
+                    <p class="image-caption">图6: 混合研究方法框架 - 定量+定性双线并行，数据驱动决策闭环</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心能力 -->
+    <section>
+        <div class="section-container">
+            <div class="section-label">Core Competencies</div>
+            <h2 class="section-title">我的角色定位与<span class="highlight">核心能力</span></h2>
+
+            <div class="content-block">
+                <h3>深度介入，而非表面观察</h3>
+
+                <div class="capability-grid">
+                    <div class="capability-item">
+                        <h3>❌ 我没有停留在</h3>
+                        <p>"用户说不好玩"的表面现象<br>
+                        交付一份PPT报告就结束</p>
+                    </div>
+                    <div class="capability-item">
+                        <h3>✅ 而是深度介入</h3>
+                        <p>从0到1搭建HEART×生命周期的双重加权监控体系<br>
+                        基于HEART预警触发双线研究，分别诊断新用户和VIP问题<br>
+                        用NVivo编码精准定义"预期违约"和"玩法疲劳"的心理症结<br>
+                        用Kano模型验证洞察普遍性并排定开发优先级<br>
+                        推动4个方案全部上线，并搭建VIP召回体系实现商业闭环</p>
+                    </div>
+                </div>
+
+                <h3>核心能力矩阵</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>能力维度</th>
+                            <th>具体体现</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>体验度量能力</strong></td>
+                            <td>HEART框架选型论证、生命周期权重设计、双重加权计分引擎</td>
+                        </tr>
+                        <tr>
+                            <td><strong>定量分析能力</strong></td>
+                            <td>SPSS多元回归、A/B测试设计、Kano属性分析</td>
+                        </tr>
+                        <tr>
+                            <td><strong>定性研究能力</strong></td>
+                            <td>20人深度访谈、NVivo三级编码、扎根理论应用</td>
+                        </tr>
+                        <tr>
+                            <td><strong>跨职能推动</strong></td>
+                            <td>组织产研运客服协同、推动方案上线、搭建召回体系、ROI闭环验证</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="section-container">
+            <a href="index.copy.html" class="back-button">← 返回作品集首页</a>
+            <p style="margin-top: 30px;">© 2025 蒋云凯. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

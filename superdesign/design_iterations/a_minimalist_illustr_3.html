@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Illustration - Style 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #eef0ff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .illustration {
+            width: 500px;
+            height: 280px;
+            position: relative;
+        }
+        /* Simple flat desk */
+        .desk-surface {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 420px;
+            height: 6px;
+            background: #0b2e5a;
+            border-radius: 3px;
+        }
+        .desk-base {
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 360px;
+            height: 48px;
+            background: linear-gradient(180deg, rgba(11, 46, 90, 0.15) 0%, rgba(11, 46, 90, 0.08) 100%);
+            border-radius: 4px;
+        }
+        /* Person - geometric style */
+        .person-container {
+            position: absolute;
+            bottom: 54px;
+            left: 120px;
+        }
+        .head-circle {
+            width: 56px;
+            height: 56px;
+            background: #f4c2a3;
+            border-radius: 50%;
+            position: relative;
+            z-index: 3;
+        }
+        .hair-cap {
+            position: absolute;
+            top: -8px;
+            left: -4px;
+            width: 64px;
+            height: 48px;
+            background: #1c2230;
+            border-radius: 32px 32px 0 0;
+        }
+        .neck {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            width: 16px;
+            height: 12px;
+            background: #f4c2a3;
+            border-radius: 2px;
+        }
+        .upper-body {
+            position: absolute;
+            top: 58px;
+            left: -4px;
+            width: 64px;
+            height: 72px;
+            background: #6b8cce;
+            border-radius: 12px 12px 4px 4px;
+        }
+        .shoulder-line {
+            position: absolute;
+            top: 8px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(11, 46, 90, 0.2);
+        }
+        .arm-extended {
+            position: absolute;
+            top: 72px;
+            left: 48px;
+            width: 72px;
+            height: 10px;
+            background: #6b8cce;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .hand-extended {
+            position: absolute;
+            top: -3px;
+            right: -10px;
+            width: 16px;
+            height: 16px;
+            background: #f4c2a3;
+            border-radius: 50%;
+        }
+        /* Laptop - ultra minimal */
+        .laptop-container {
+            position: absolute;
+            bottom: 54px;
+            left: 260px;
+        }
+        .screen-panel {
+            width: 108px;
+            height: 76px;
+            background: #1c2230;
+            border-radius: 5px;
+            position: relative;
+            border: 3px solid #0b2e5a;
+        }
+        .screen-glow {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            background: linear-gradient(135deg, #d4dcff 0%, #c9d2ff 30%, #b8c5f0 60%, #a5b4e8 100%);
+            border-radius: 3px;
+        }
+        .screen-highlight {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 40px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+        .keyboard-base {
+            position: absolute;
+            top: 76px;
+            left: -8px;
+            width: 124px;
+            height: 8px;
+            background: #1c2230;
+            border-radius: 2px;
+        }
+        /* Coffee mug - simplified */
+        .mug-container {
+            position: absolute;
+            bottom: 54px;
+            left: 48px;
+        }
+        .mug-body {
+            width: 28px;
+            height: 32px;
+            background: #0b2e5a;
+            border-radius: 0 0 10px 10px;
+            position: relative;
+        }
+        .coffee-top {
+            position: absolute;
+            top: 6px;
+            left: 3px;
+            right: 3px;
+            height: 22px;
+            background: #9b7d5f;
+            border-radius: 2px;
+        }
+        .mug-handle {
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            width: 14px;
+            height: 18px;
+            border: 3px solid #0b2e5a;
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+        }
+        .steam {
+            position: absolute;
+            top: -16px;
+            left: 8px;
+            width: 2px;
+            height: 12px;
+            background: linear-gradient(180deg, rgba(107, 140, 206, 0.4) 0%, transparent 100%);
+            border-radius: 1px;
+        }
+        .steam::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            width: 2px;
+            height: 10px;
+            background: linear-gradient(180deg, rgba(107, 140, 206, 0.3) 0%, transparent 100%);
+            border-radius: 1px;
+        }
+        /* Decorative plant */
+        .plant-decoration {
+            position: absolute;
+            bottom: 54px;
+            right: 48px;
+        }
+        .planter {
+            width: 36px;
+            height: 32px;
+            background: #c9d2ff;
+            border-radius: 0 0 6px 6px;
+            position: relative;
+        }
+        .planter-rim {
+            position: absolute;
+            top: 0;
+            left: -2px;
+            right: -2px;
+            height: 4px;
+            background: #b8c5f0;
+            border-radius: 2px 2px 0 0;
+        }
+        .leaf-group-1 {
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            width: 16px;
+            height: 28px;
+            background: #5a8a6e;
+            border-radius: 50% 0 50% 0;
+            transform: rotate(-15deg);
+        }
+        .leaf-group-2 {
+            position: absolute;
+            top: -16px;
+            left: 14px;
+            width: 14px;
+            height: 24px;
+            background: #6fa885;
+            border-radius: 50% 0 50% 0;
+            transform: rotate(20deg);
+        }
+        .leaf-group-3 {
+            position: absolute;
+            top: -22px;
+            left: 6px;
+            width: 12px;
+            height: 20px;
+            background: #7fb599;
+            border-radius: 50% 0 50% 0;
+            transform: rotate(-35deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="illustration">
+        <!-- Desk -->
+        <div class="desk-base"></div>
+        <div class="desk-surface"></div>
+
+        <!-- Person -->
+        <div class="person-container">
+            <div class="hair-cap"></div>
+            <div class="head-circle"></div>
+            <div class="neck"></div>
+            <div class="upper-body">
+                <div class="shoulder-line"></div>
+            </div>
+            <div class="arm-extended">
+                <div class="hand-extended"></div>
+            </div>
+        </div>
+
+        <!-- Laptop -->
+        <div class="laptop-container">
+            <div class="screen-panel">
+                <div class="screen-glow">
+                    <div class="screen-highlight"></div>
+                </div>
+            </div>
+            <div class="keyboard-base"></div>
+        </div>
+
+        <!-- Coffee -->
+        <div class="mug-container">
+            <div class="steam"></div>
+            <div class="mug-body">
+                <div class="coffee-top"></div>
+            </div>
+            <div class="mug-handle"></div>
+        </div>
+
+        <!-- Plant -->
+        <div class="plant-decoration">
+            <div class="leaf-group-1"></div>
+            <div class="leaf-group-2"></div>
+            <div class="leaf-group-3"></div>
+            <div class="planter">
+                <div class="planter-rim"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

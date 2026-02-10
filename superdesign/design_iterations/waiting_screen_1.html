@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>等待医生回复</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F7F7F7] m-0 p-0 overflow-hidden">
+    <div class="w-[375px] bg-[#F7F7F7] overflow-hidden">
+
+        <!-- Navigation Bar -->
+        <div class="bg-white h-[56px] flex items-center px-4 border-b border-gray-100">
+            <div class="w-8 h-8 flex items-center justify-center">
+                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </div>
+            <h1 class="flex-1 text-center text-[17px] font-semibold text-black">等待医生回复</h1>
+            <div class="w-8"></div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="px-4 pt-8 pb-4">
+
+            <!-- Loading Animation -->
+            <div class="flex flex-col items-center mb-6">
+                <div class="relative w-20 h-20 mb-4">
+                    <svg class="w-20 h-20" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="36" fill="none" stroke="#E5E5E5" stroke-width="4"/>
+                        <circle cx="40" cy="40" r="36" fill="none" stroke="#00AAFF" stroke-width="4"
+                                stroke-dasharray="80 140" stroke-linecap="round"/>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-[#00AAFF]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <h2 class="text-[24px] font-bold text-black mb-2">预计 3 分钟后回复</h2>
+                <p class="text-[14px] text-gray-500">医生正在查看您的资料</p>
+            </div>
+
+            <!-- Doctor Card -->
+            <div class="bg-white rounded-xl p-4 mb-4 shadow-sm">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#E0F2FF] to-[#B3E0FF] border-2 border-[#00AAFF] flex items-center justify-center mr-3">
+                        <span class="text-[#00AAFF] font-semibold text-lg">医</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-[16px] font-semibold text-black">凌华平 <span class="font-normal text-gray-600">主任医师</span></h3>
+                        <p class="text-[13px] text-gray-500">富阳区第二人民医院 / 妇产科</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Tips -->
+            <div class="bg-white rounded-xl p-4 shadow-sm mb-4">
+                <div class="flex items-center mb-3">
+                    <div class="w-1 h-4 bg-[#00AAFF] rounded-full mr-2"></div>
+                    <h4 class="text-[15px] font-semibold text-black">健康小贴士</h4>
+                </div>
+                <div class="bg-[#F8FBFF] rounded-lg p-3">
+                    <h5 class="text-[14px] font-medium text-black mb-2">孕期注意事项</h5>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-[13px] text-gray-600">
+                            <span class="text-[#00AAFF] mr-2">•</span>
+                            <span>保持心情愉快，避免过度紧张</span>
+                        </li>
+                        <li class="flex items-start text-[13px] text-gray-600">
+                            <span class="text-[#00AAFF] mr-2">•</span>
+                            <span>定期产检，关注胎儿发育</span>
+                        </li>
+                        <li class="flex items-start text-[13px] text-gray-600">
+                            <span class="text-[#00AAFF] mr-2">•</span>
+                            <span>均衡饮食，适量运动</span>
+                        </li>
+                        <li class="flex items-start text-[13px] text-gray-600">
+                            <span class="text-[#00AAFF] mr-2">•</span>
+                            <span>保证充足睡眠，避免熬夜</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cancel Button -->
+            <div class="text-center">
+                <span class="text-[14px] text-gray-400 py-3 px-6">取消咨询</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

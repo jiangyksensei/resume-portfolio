@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问诊对话</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-4px); }
+        }
+        .typing-dot:nth-child(1) { animation: bounce 1.4s infinite 0s; }
+        .typing-dot:nth-child(2) { animation: bounce 1.4s infinite 0.2s; }
+        .typing-dot:nth-child(3) { animation: bounce 1.4s infinite 0.4s; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <!-- Mobile Container -->
+    <div class="w-[375px] h-[667px] bg-white relative overflow-hidden shadow-2xl rounded-[32px] border-[8px] border-gray-800 flex flex-col">
+
+        <!-- Navigation Bar -->
+        <div class="bg-white h-[64px] flex items-center px-4 border-b border-gray-100 shrink-0">
+            <div class="w-8 h-8 flex items-center justify-center">
+                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </div>
+
+            <!-- Doctor Info -->
+            <div class="flex items-center flex-1 ml-2">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#E0F2FF] to-[#B3E0FF] border-2 border-[#00AAFF] flex items-center justify-center mr-2">
+                    <span class="text-[#00AAFF] font-medium text-sm">医</span>
+                </div>
+                <div>
+                    <h1 class="text-[15px] font-semibold text-black">凌华平 主任医师</h1>
+                    <p class="text-[12px] text-gray-500">妇产科</p>
+                </div>
+            </div>
+
+            <!-- Timer -->
+            <div class="bg-red-50 border border-red-200 rounded-full px-3 py-1">
+                <span class="text-[13px] font-semibold text-red-500">剩余 12:30</span>
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="flex-1 overflow-y-auto bg-[#F7F7F7] px-4 py-4">
+
+            <!-- Patient Message 1 -->
+            <div class="flex justify-end mb-4">
+                <div class="max-w-[75%]">
+                    <div class="bg-[#E0F2FF] border border-[#00AAFF] rounded-xl rounded-tr-sm px-4 py-3">
+                        <p class="text-[14px] text-black leading-relaxed">医生您好，我怀孕3个月了，最近有点恶心想吐，正常吗？</p>
+                    </div>
+                    <p class="text-[11px] text-gray-400 text-right mt-1">14:23</p>
+                </div>
+            </div>
+
+            <!-- Doctor Message 1 -->
+            <div class="flex justify-start mb-4">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#E0F2FF] to-[#B3E0FF] border-2 border-[#00AAFF] flex items-center justify-center mr-2 shrink-0 mt-1">
+                    <span class="text-[#00AAFF] font-medium text-xs">医</span>
+                </div>
+                <div class="max-w-[75%]">
+                    <div class="bg-white border border-gray-200 rounded-xl rounded-tl-sm px-4 py-3 shadow-sm">
+                        <p class="text-[14px] text-black leading-relaxed">您好，这是正常的早孕反应。建议：</p>
+                        <ul class="mt-2 space-y-1">
+                            <li class="text-[14px] text-black">1. 少食多餐，避免空腹</li>
+                            <li class="text-[14px] text-black">2. 多吃清淡易消化的食物</li>
+                            <li class="text-[14px] text-black">3. 如果严重影响进食，需要就医</li>
+                        </ul>
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-1">14:24</p>
+                </div>
+            </div>
+
+            <!-- Patient Message 2 -->
+            <div class="flex justify-end mb-4">
+                <div class="max-w-[75%]">
+                    <div class="bg-[#E0F2FF] border border-[#00AAFF] rounded-xl rounded-tr-sm px-4 py-3">
+                        <p class="text-[14px] text-black leading-relaxed">需要吃药吗？</p>
+                    </div>
+                    <p class="text-[11px] text-gray-400 text-right mt-1">14:25</p>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="flex justify-start mb-4">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#E0F2FF] to-[#B3E0FF] border-2 border-[#00AAFF] flex items-center justify-center mr-2 shrink-0">
+                    <span class="text-[#00AAFF] font-medium text-xs">医</span>
+                </div>
+                <div class="bg-gray-100 rounded-xl px-4 py-3 flex items-center">
+                    <div class="flex space-x-1">
+                        <div class="typing-dot w-2 h-2 bg-[#00AAFF] rounded-full"></div>
+                        <div class="typing-dot w-2 h-2 bg-[#00AAFF] rounded-full"></div>
+                        <div class="typing-dot w-2 h-2 bg-[#00AAFF] rounded-full"></div>
+                    </div>
+                    <span class="text-[12px] text-gray-500 ml-2">正在输入</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="bg-[#F7F7F7] border-t border-gray-200 px-4 py-3 shrink-0">
+            <!-- Tool Bar -->
+            <div class="flex items-center space-x-4 mb-3">
+                <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center border border-gray-200 shadow-sm">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                </button>
+                <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center border border-gray-200 shadow-sm">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                    </svg>
+                </button>
+                <button class="w-9 h-9 bg-white rounded-full flex items-center justify-center border border-gray-200 shadow-sm">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Input Field -->
+            <div class="flex items-center space-x-3">
+                <div class="flex-1 bg-white rounded-full border border-gray-200 px-4 py-2 shadow-sm">
+                    <input type="text" placeholder="输入消息..." class="w-full text-[14px] text-black placeholder-gray-400 outline-none bg-transparent">
+                </div>
+                <button class="w-[60px] h-[40px] bg-[#00AAFF] rounded-full flex items-center justify-center shadow-md">
+                    <span class="text-white font-semibold text-[15px]">发送</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

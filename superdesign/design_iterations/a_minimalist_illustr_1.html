@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Illustration - Style 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #eef0ff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .illustration {
+            width: 500px;
+            height: 280px;
+            position: relative;
+        }
+        /* Desk */
+        .desk {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 440px;
+            height: 8px;
+            background: #0b2e5a;
+            border-radius: 4px;
+        }
+        .desk-leg-left {
+            position: absolute;
+            bottom: 48px;
+            left: 60px;
+            width: 6px;
+            height: 100px;
+            background: #0b2e5a;
+            border-radius: 3px;
+        }
+        .desk-leg-right {
+            position: absolute;
+            bottom: 48px;
+            right: 60px;
+            width: 6px;
+            height: 100px;
+            background: #0b2e5a;
+            border-radius: 3px;
+        }
+        /* Person */
+        .person {
+            position: absolute;
+            bottom: 100px;
+            left: 140px;
+        }
+        .head {
+            width: 52px;
+            height: 52px;
+            background: #f4c2a3;
+            border-radius: 50%;
+            position: relative;
+        }
+        .hair {
+            position: absolute;
+            top: -8px;
+            left: -4px;
+            width: 60px;
+            height: 44px;
+            background: #1c2230;
+            border-radius: 30px 30px 0 0;
+        }
+        .body {
+            position: absolute;
+            top: 44px;
+            left: -12px;
+            width: 76px;
+            height: 88px;
+            background: #6b8cce;
+            border-radius: 16px 16px 0 0;
+        }
+        .arm-left {
+            position: absolute;
+            top: 56px;
+            left: -32px;
+            width: 56px;
+            height: 12px;
+            background: #6b8cce;
+            border-radius: 6px;
+            transform: rotate(-12deg);
+        }
+        .hand-left {
+            position: absolute;
+            top: 56px;
+            left: 16px;
+            width: 16px;
+            height: 16px;
+            background: #f4c2a3;
+            border-radius: 50%;
+        }
+        /* Laptop */
+        .laptop {
+            position: absolute;
+            bottom: 48px;
+            left: 200px;
+        }
+        .laptop-screen {
+            width: 100px;
+            height: 68px;
+            background: #0b2e5a;
+            border-radius: 4px;
+            border: 3px solid #1c2230;
+            position: relative;
+        }
+        .laptop-display {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            background: linear-gradient(135deg, #c9d2ff 0%, #a5b4e8 100%);
+            border-radius: 2px;
+        }
+        .laptop-base {
+            position: absolute;
+            top: 68px;
+            left: -8px;
+            width: 116px;
+            height: 8px;
+            background: #1c2230;
+            border-radius: 2px;
+        }
+        /* Plant */
+        .plant {
+            position: absolute;
+            bottom: 48px;
+            right: 80px;
+        }
+        .pot {
+            width: 32px;
+            height: 28px;
+            background: #c9d2ff;
+            border-radius: 0 0 4px 4px;
+            position: relative;
+        }
+        .leaf-1 {
+            position: absolute;
+            top: -16px;
+            left: 8px;
+            width: 16px;
+            height: 24px;
+            background: #5a8a6e;
+            border-radius: 50% 0 50% 0;
+            transform: rotate(-20deg);
+        }
+        .leaf-2 {
+            position: absolute;
+            top: -12px;
+            left: 12px;
+            width: 14px;
+            height: 20px;
+            background: #6fa885;
+            border-radius: 50% 0 50% 0;
+            transform: rotate(25deg);
+        }
+        /* Coffee */
+        .coffee {
+            position: absolute;
+            bottom: 48px;
+            left: 80px;
+        }
+        .cup {
+            width: 24px;
+            height: 28px;
+            background: #0b2e5a;
+            border-radius: 0 0 8px 8px;
+            position: relative;
+        }
+        .coffee-liquid {
+            position: absolute;
+            top: 4px;
+            left: 2px;
+            right: 2px;
+            height: 20px;
+            background: #8b7355;
+            border-radius: 2px;
+        }
+        .handle {
+            position: absolute;
+            top: 8px;
+            right: -8px;
+            width: 12px;
+            height: 16px;
+            border: 3px solid #0b2e5a;
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="illustration">
+        <!-- Desk -->
+        <div class="desk-leg-left"></div>
+        <div class="desk-leg-right"></div>
+        <div class="desk"></div>
+
+        <!-- Person -->
+        <div class="person">
+            <div class="hair"></div>
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arm-left">
+                <div class="hand-left"></div>
+            </div>
+        </div>
+
+        <!-- Laptop -->
+        <div class="laptop">
+            <div class="laptop-screen">
+                <div class="laptop-display"></div>
+            </div>
+            <div class="laptop-base"></div>
+        </div>
+
+        <!-- Plant -->
+        <div class="plant">
+            <div class="leaf-1"></div>
+            <div class="leaf-2"></div>
+            <div class="pot"></div>
+        </div>
+
+        <!-- Coffee -->
+        <div class="coffee">
+            <div class="cup">
+                <div class="coffee-liquid"></div>
+            </div>
+            <div class="handle"></div>
+        </div>
+    </div>
+</body>
+</html>

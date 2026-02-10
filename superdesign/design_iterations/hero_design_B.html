@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方案 B：浅紫灰背景（推荐）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Design Label -->
+    <div class="fixed top-4 right-4 bg-indigo-700 text-white px-4 py-2 text-sm font-semibold z-50">
+        方案 B：浅紫灰背景（推荐）
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 px-20 py-8 z-40 bg-white/98 backdrop-blur-sm border-b border-gray-100">
+        <div class="flex justify-between items-center">
+            <a href="#" class="text-xl tracking-wider text-black">
+                <strong class="font-bold">YUNKAI</strong> <span class="font-light">JIANG</span>
+            </a>
+            <nav>
+                <a href="#" class="text-sm font-semibold text-black relative inline-block">
+                    返回首页
+                    <span class="absolute bottom-0 left-1 right-[-2px] h-[40%] bg-indigo-200 -z-10"></span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - 方案 B -->
+    <section class="bg-[#EBE9F4] min-h-[70vh] flex items-center pt-32 pb-20 px-20">
+        <div class="max-w-6xl mx-auto w-full">
+            <!-- Breadcrumb -->
+            <div class="text-sm text-gray-500 mb-8 tracking-wide">
+                <a href="#" class="hover:text-gray-700 transition">首页</a>
+                <span class="mx-2">/</span>
+                <span>案例详情</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-5xl md:text-6xl font-bold text-black leading-tight mb-6 tracking-tight">
+                Yalla 全链路体验数字化<br>治理与增长实战
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-xl text-gray-600 mb-10">
+                基于混合研究方法的体验诊断与策略设计
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-3 mb-12">
+                <span class="px-5 py-2 bg-[#D1CFE2] text-indigo-800 text-sm font-medium">
+                    体验度量体系搭建
+                </span>
+                <span class="px-5 py-2 bg-[#D1CFE2] text-indigo-800 text-sm font-medium">
+                    混合研究方法
+                </span>
+                <span class="px-5 py-2 bg-[#D1CFE2] text-indigo-800 text-sm font-medium">
+                    数据驱动决策
+                </span>
+                <span class="px-5 py-2 bg-[#D1CFE2] text-indigo-800 text-sm font-medium">
+                    跨职能推动
+                </span>
+            </div>
+
+            <!-- Stats -->
+            <div class="flex gap-16">
+                <div class="flex flex-col gap-2">
+                    <span class="text-sm text-gray-500 font-medium">我的角色</span>
+                    <span class="text-lg font-semibold text-black">用户体验/用户研究负责人</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-sm text-gray-500 font-medium">团队规模</span>
+                    <span class="text-lg font-semibold text-black">50+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Preview -->
+    <section class="py-24 px-20 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <p class="text-sm text-gray-400 tracking-widest uppercase mb-4">Key Results</p>
+            <h2 class="text-4xl font-bold text-black mb-4">
+                核心<span class="text-indigo-700">成果</span>
+            </h2>
+            <p class="text-gray-400">（页面其余内容保持不变...）</p>
+        </div>
+    </section>
+</body>
+</html>

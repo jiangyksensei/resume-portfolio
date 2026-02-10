@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>混合研究方法框架</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+        }
+
+        .phase-box {
+            background: #5261F4;
+            color: white;
+            border-radius: 12px;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 15px;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .connector-line {
+            width: 2px;
+            height: 80px;
+            background: #5261F4;
+            margin-left: 99px;
+        }
+
+        .outcome-text {
+            color: #5261F4;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .method-text {
+            color: #374151;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .title-box {
+            border: 2px solid #5261F4;
+            border-radius: 16px;
+            padding: 20px 48px;
+            display: inline-block;
+            background: white;
+        }
+
+        .title-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1F2937;
+        }
+
+        .summary-box {
+            border: 2px solid #F59E0B;
+            border-radius: 16px;
+            padding: 24px 48px;
+            background: white;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .summary-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1F2937;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen py-16">
+    <div class="max-w-[1400px] mx-auto px-8">
+
+        <!-- Title -->
+        <div class="flex justify-center mb-20">
+            <div class="title-box">
+                <div class="title-text">混合研究方法框架：定量 + 定性 + 验证</div>
+            </div>
+        </div>
+
+        <!-- Phase 0 -->
+        <div class="grid grid-cols-[200px_1fr_1fr] gap-12 items-center mb-0">
+            <div class="phase-box">
+                Phase 0<br>HEART监控
+            </div>
+            <div class="method-text">分层体验监控</div>
+            <div class="outcome-text">→ 预警触发</div>
+        </div>
+        <div class="connector-line"></div>
+
+        <!-- Phase 1 -->
+        <div class="grid grid-cols-[200px_1fr_1fr] gap-12 items-center mb-0">
+            <div class="phase-box">
+                Phase 1<br>定量诊断
+            </div>
+            <div class="method-text">SPSS回归分析</div>
+            <div class="outcome-text">→ 量化关键因素</div>
+        </div>
+        <div class="connector-line"></div>
+
+        <!-- Phase 2 -->
+        <div class="grid grid-cols-[200px_1fr_1fr] gap-12 items-center mb-0">
+            <div class="phase-box">
+                Phase 2<br>定性探索
+            </div>
+            <div class="method-text">NVivo深度访谈</div>
+            <div class="outcome-text">→ 挖掘深层动机</div>
+        </div>
+        <div class="connector-line"></div>
+
+        <!-- Phase 3 -->
+        <div class="grid grid-cols-[200px_1fr_1fr] gap-12 items-center mb-0">
+            <div class="phase-box">
+                Phase 3<br>Kano验证
+            </div>
+            <div class="method-text">Kano问卷 (N=800)</div>
+            <div class="outcome-text">→ 验证普遍性 + 优先级</div>
+        </div>
+        <div class="connector-line"></div>
+
+        <!-- Phase 4 -->
+        <div class="grid grid-cols-[200px_1fr_1fr] gap-12 items-center mb-20">
+            <div class="phase-box">
+                Phase 4<br>方案落地
+            </div>
+            <div class="method-text">A/B测试 + 召回体系</div>
+            <div class="outcome-text">→ 效果验证 + ROI闭环</div>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary-box">
+            <div class="summary-text">
+                价值：通过定量锁定问题 → 定性理解原因 → 验证普遍性 → 量化ROI，形成完整闭环
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

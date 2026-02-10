@@ -1,0 +1,145 @@
+{
+  "name": "微脉医疗 Design System",
+  "description": "基于微脉 APP 截图提取的设计系统",
+  "colors": {
+    "primary": {
+      "main": "#00AAFF",
+      "light": "#E0F2FF",
+      "dark": "#0088CC"
+    },
+    "secondary": {
+      "orange": "#FF9800",
+      "green": "#4CAF50",
+      "red": "#FF4757"
+    },
+    "neutrals": {
+      "white": "#FFFFFF",
+      "background": "#F7F7F7",
+      "border": "#E5E5E5",
+      "divider": "#F0F0F0",
+      "textPrimary": "#333333",
+      "textSecondary": "#666666",
+      "textTertiary": "#999999"
+    }
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif"
+    },
+    "sizes": {
+      "xs": "11px",
+      "sm": "12px",
+      "base": "14px",
+      "md": "15px",
+      "lg": "16px",
+      "xl": "17px",
+      "xxl": "20px",
+      "xxxl": "24px"
+    },
+    "weights": {
+      "normal": "400",
+      "medium": "500",
+      "semibold": "600",
+      "bold": "700"
+    },
+    "lineHeights": {
+      "tight": "1.2",
+      "normal": "1.5",
+      "relaxed": "1.7"
+    }
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "20px",
+    "xxl": "24px",
+    "xxxl": "32px"
+  },
+  "borderRadius": {
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px",
+    "xl": "16px",
+    "full": "50%",
+    "pill": "20px"
+  },
+  "shadows": {
+    "sm": "0 1px 3px rgba(0,0,0,0.08)",
+    "md": "0 2px 8px rgba(0,0,0,0.12)",
+    "lg": "0 4px 16px rgba(0,0,0,0.15)"
+  },
+  "components": {
+    "statusBar": {
+      "height": "20px",
+      "background": "#F7F7F7"
+    },
+    "navBar": {
+      "height": "44px",
+      "background": "#FFFFFF",
+      "titleSize": "17px",
+      "titleWeight": "600"
+    },
+    "button": {
+      "primary": {
+        "background": "#00AAFF",
+        "color": "#FFFFFF",
+        "borderRadius": "20px",
+        "height": "40px",
+        "fontSize": "15px"
+      },
+      "secondary": {
+        "background": "#FFFFFF",
+        "color": "#00AAFF",
+        "border": "1px solid #00AAFF",
+        "borderRadius": "20px"
+      }
+    },
+    "card": {
+      "background": "#FFFFFF",
+      "borderRadius": "12px",
+      "padding": "16px",
+      "shadow": "0 2px 8px rgba(0,0,0,0.08)"
+    },
+    "avatar": {
+      "sm": "32px",
+      "md": "40px",
+      "lg": "50px",
+      "borderRadius": "50%",
+      "border": "2px solid #00AAFF"
+    },
+    "tag": {
+      "background": "#E0F2FF",
+      "color": "#00AAFF",
+      "borderRadius": "12px",
+      "padding": "4px 12px",
+      "fontSize": "12px"
+    },
+    "input": {
+      "height": "40px",
+      "borderRadius": "20px",
+      "border": "1px solid #E5E5E5",
+      "background": "#FFFFFF",
+      "padding": "0 16px"
+    },
+    "messageBubble": {
+      "patient": {
+        "background": "rgba(0, 170, 255, 0.1)",
+        "border": "1px solid #00AAFF",
+        "borderRadius": "12px"
+      },
+      "doctor": {
+        "background": "#FFFFFF",
+        "border": "1px solid #E5E5E5",
+        "borderRadius": "12px"
+      }
+    }
+  },
+  "layout": {
+    "screenWidth": "375px",
+    "screenHeight": "667px",
+    "containerPadding": "16px",
+    "safeAreaBottom": "34px"
+  }
+}

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蒋云凯 - UX设计师</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --bg: #ffffff;
+            --panel: #eef0ff;
+            --panel-soft: #f7f8ff;
+            --text: #1c2230;
+            --ink: #0b1f3a;
+            --muted: #5f6a7a;
+            --accent: #0b2e5a;
+            --card: #ffffff;
+            --highlight: #FFD066;
+            --blue-block: #c7d0ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 26px 120px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1.6px;
+            color: var(--ink);
+        }
+
+        .logo strong {
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            position: relative;
+            display: inline-block;
+            padding: 2px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -6px;
+            height: 2px;
+            background: var(--ink);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--panel);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 0 0;
+            position: relative;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(238, 240, 255, 0.9) 0%, rgba(247, 248, 255, 1) 55%);
+            z-index: 0;
+        }
+
+
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            column-gap: 70px;
+            align-items: center;
+            padding: 0 120px;
+        }
+
+        .hero-top {
+            display: contents;
+        }
+
+        .hero-title-wrapper {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+
+        .hero-title-wrapper h1 {
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 1.08;
+            margin-bottom: 18px;
+            color: var(--ink);
+            letter-spacing: -1px;
+        }
+
+
+        .hero-role {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.4;
+            margin-bottom: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-bottom {
+            grid-column: 1;
+            grid-row: 2;
+            max-width: 800px;
+            padding-bottom: 60px;
+        }
+
+        .hero-description {
+            font-size: 15px;
+            line-height: 1.9;
+            color: var(--muted);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 30px;
+        }
+
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .btn-download {
+            display: inline-block;
+            padding: 14px 34px;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            border: 1px solid #111;
+        }
+
+        .btn-download::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 6px;
+            right: -6px;
+            bottom: -6px;
+            border: 1px solid #111;
+            opacity: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-download:hover::after {
+            transform: translate(-4px, -4px);
+        }
+
+        .hero-image {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            align-self: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 500px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: -70px;
+            right: 120px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            z-index: 10;
+            opacity: 0.6;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            width: 2px;
+            height: 180px;
+            background: var(--ink);
+            display: block;
+            margin-top: 5px;
+        }
+
+        .scroll-text {
+            writing-mode: vertical-rl;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--ink);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Section通用样式 */
+        section {
+            padding: 104px 120px;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            color: var(--muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: var(--ink);
+            letter-spacing: -1px;
+        }
+
+        .section-title .highlight {
+            color: var(--ink);
+            background: linear-gradient(180deg, transparent 55%, var(--highlight) 55%);
+            padding: 0 4px;
+        }
+
+        .highlight {
+            color: var(--ink);
+            background: linear-gradient(180deg, transparent 55%, var(--highlight) 55%);
+            padding: 0 4px;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--bg);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 64px;
+            row-gap: 72px;
+        }
+
+        .skill-item {
+            text-align: left;
+            padding: 6px 8px 0;
+        }
+
+        .skill-number {
+            font-size: 56px;
+            font-weight: 300;
+            color: #8da0bb;
+            margin-bottom: 14px;
+            line-height: 1;
+        }
+
+        .skill-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.2px;
+            color: var(--ink);
+        }
+
+        .skill-item p {
+            font-size: 15px;
+            line-height: 1.85;
+            color: var(--muted);
+        }
+
+        /* Experience Section */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+        }
+
+        .experience-meta {
+            padding-top: 5px;
+        }
+
+        .experience-period {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .experience-duration {
+            font-size: 12px;
+            color: #bdbdb6;
+        }
+
+        .experience-details h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text);
+            letter-spacing: -0.5px;
+        }
+
+        .experience-company {
+            font-size: 16px;
+            color: var(--muted);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .experience-description {
+            font-size: 15px;
+            line-height: 1.9;
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .experience-achievements {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .achievement {
+            padding: 18px;
+            background: var(--card);
+            border-radius: 0;
+            box-shadow: 0 12px 28px rgba(12, 28, 60, 0.08);
+        }
+
+        .achievement-value {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: var(--ink);
+        }
+
+        .achievement-label {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            background: var(--bg);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: auto;
+            gap: 16px;
+        }
+
+        .portfolio-card {
+            background: var(--card);
+            overflow: hidden;
+            border-radius: 0;
+            transition: all 0.3s;
+            padding: 26px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            box-shadow: 0 16px 36px rgba(12, 28, 60, 0.12);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-tag {
+            padding: 3px 10px;
+            background: #c9d2ff;
+            color: var(--ink);
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 0;
+        }
+
+        .portfolio-card h3 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--ink);
+        }
+
+        .portfolio-card p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .portfolio-metrics {
+            display: flex;
+            gap: 20px;
+            padding-top: 14px;
+        }
+
+        .portfolio-metric {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-value-small {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .metric-label-small {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--panel);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+        }
+
+        .contact-info h3 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--ink);
+            letter-spacing: -1px;
+        }
+
+        .contact-info h3 .highlight {
+            color: var(--text);
+        }
+
+        .contact-description {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 8px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .contact-value.link {
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr-box {
+            width: 300px;
+            height: auto;
+            padding: 20px;
+            background: var(--card);
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 14px 30px rgba(20, 40, 70, 0.08);
+        }
+
+        .qr-icon {
+            font-size: 64px;
+            filter: grayscale(100%);
+        }
+
+        .qr-label {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            padding: 120px 120px 40px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--muted);
+            background: var(--panel);
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 280px;
+            background-image: url('footer-illustration.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        footer p {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-title-wrapper h1 {
+                font-size: 70px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero-container {
+                column-gap: 50px;
+            }
+
+            .hero-title-wrapper h1 {
+                font-size: 56px;
+            }
+
+            .hero-role {
+                font-size: 20px;
+            }
+
+            .hero-image img {
+                width: 380px;
+            }
+
+            .hero-illustration-bg {
+                right: -80px;
+                top: -10px;
+                width: 420px;
+                height: 290px;
+                opacity: 0.22;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 24px;
+            }
+
+            .nav-menu {
+                gap: 18px;
+            }
+
+            .nav-menu a {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 110px 0 60px;
+            }
+
+            .hero-container {
+                column-gap: 30px;
+                padding: 0 24px;
+            }
+
+            .hero-title-wrapper h1 {
+                font-size: 42px;
+            }
+
+            .hero-role {
+                font-size: 18px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .hero-image img {
+                width: 380px;
+            }
+
+            .hero-illustration-bg {
+                right: -120px;
+                top: -20px;
+                width: 360px;
+                height: 250px;
+                opacity: 0.2;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+
+            section {
+                padding: 72px 24px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .experience-achievements {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-details h3 {
+                font-size: 26px;
+            }
+
+            .contact-info h3 {
+                font-size: 32px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-container {
+                column-gap: 20px;
+            }
+
+            .hero-title-wrapper h1 {
+                font-size: 34px;
+            }
+
+            .hero-role {
+                font-size: 16px;
+            }
+
+            .hero-image img {
+                width: 380px;
+            }
+
+            .btn-download {
+                padding: 12px 24px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo"><strong>YUNKAI</strong> JIANG</div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#hero">个人简介</a></li>
+                <li><a href="#experience">职业经历</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#contact">联系我</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-container">
+            <div class="hero-top">
+                <div class="hero-title-wrapper">
+                    <h1>Hi. I'm<br>蒋云凯.</h1>
+                    <div class="hero-role">资深用户研究 & 体验设计师</div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/group-459.png" alt="蒋云凯插画">
+                </div>
+            </div>
+
+            <!-- 下部：描述、信息、按钮 -->
+            <div class="hero-bottom">
+                <p class="hero-description">
+                    10年用户体验洞察专家，专注数据驱动的体验优化。擅长搭建HEART/NPS体验度量体系，拥有中东市场跨文化研究实战经验及B端SaaS复杂业务设计能力。
+                </p>
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">工作年限</span>
+                        <span class="meta-value">11年经验</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">毕业院校</span>
+                        <span class="meta-value">中国计量大学</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">专业方向</span>
+                        <span class="meta-value">工业设计</span>
+                    </div>
+                </div>
+                <a href="蒋云凯-简历.pdf" class="btn-download" download="蒋云凯-简历.pdf">下载简历</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="scroll-text">SCROLL</span>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="section-container">
+            <div class="section-label">What I Do</div>
+            <h2 class="section-title">核心<span class="highlight">技能</span></h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-number">01</div>
+                    <h3>用户研究与洞察</h3>
+                    <p>深度访谈、可用性测试、用户画像建立、生命周期分析、HEART/NPS体验度量体系搭建与落地。</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-number">02</div>
+                    <h3>交互与产品设计</h3>
+                    <p>信息架构设计、原型设计、B端SaaS系统设计、多端体验一致性设计、设计规范制定与维护。</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-number">03</div>
+                    <h3>跨文化研究</h3>
+                    <p>中东市场用户洞察、跨文化产品设计、本地化策略制定、UGC社交产品研究与优化。</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-number">04</div>
+                    <h3>数据驱动决策</h3>
+                    <p>用户行为分析、转化率优化、体验指标监测、A/B测试、业务增长策略制定与落地。</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-number">05</div>
+                    <h3>产品规划</h3>
+                    <p>0到1产品设计、复杂业务流程梳理、需求分析与功能规划、产品策略制定。</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-number">06</div>
+                    <h3>体系化建设</h3>
+                    <p>体验度量体系、用户召回体系、设计规范体系、跨团队协作机制建立与推动。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-container">
+            <div class="section-label">Experience</div>
+            <h2 class="section-title">职业<span class="highlight">经历</span></h2>
+            <div class="experience-list">
+                <!-- Experience 1 -->
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="experience-period">2021 - 2025</div>
+                        <div class="experience-duration">4年</div>
+                    </div>
+                    <div class="experience-details">
+                        <h3>用户体验/用户研究负责人</h3>
+                        <p class="experience-company">杭州雅乐信息技术服务有限公司 · Yalla</p>
+                        <p class="experience-description">
+                            负责中东市场语音社交平台Yalla & Yalla Ludo的用户体验研究与策略制定。主导从体验诊断到策略落地的全链路闭环，推动4个核心方案全部上线并验证ROI。搭建VIP流失预警与客服主动召回体系，建立从风险识别、分级预警、触达召回到效果监控的全流程管理机制。从0到1搭建HEART×生命周期双重加权监控体系，建立用户生命周期数据模板，创建"体验互查模式"拦截研发阶段体验缺陷；建立中东分层用户画像，主导礼物模块、社交游戏等高价值功能深度调研。
+                        </p>
+                        <div class="experience-achievements">
+                            <div class="achievement">
+                                <span class="achievement-value">↑ 12%</span>
+                                <span class="achievement-label">VIP用户ARPU</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-value">↑ 96%</span>
+                                <span class="achievement-label">引入期转化率</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-value">↓ 42%</span>
+                                <span class="achievement-label">VIP流失率</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="experience-period">2018 - 2021</div>
+                        <div class="experience-duration">3年</div>
+                    </div>
+                    <div class="experience-details">
+                        <h3>交互设计负责人</h3>
+                        <p class="experience-company">纳里健康科技有限公司</p>
+                        <p class="experience-description">
+                            负责医疗B端SaaS系统的交互设计与可用性验证。主导纳里医生PC端工作台的设计迭代，通过可用性测试驱动设计决策，将SUS评分从68.5提升至84.1（A级-优秀），任务独立完成率从58%提升至89%。同时从0到1构建云随访SaaS平台的完整体验设计。
+                        </p>
+                        <div class="experience-achievements">
+                            <div class="achievement">
+                                <span class="achievement-value">84.1</span>
+                                <span class="achievement-label">SUS可用性评分</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-value">0→1</span>
+                                <span class="achievement-label">0-1产品构建</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-value">-35%</span>
+                                <span class="achievement-label">设计效率提升</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="experience-period">2016 - 2018</div>
+                        <div class="experience-duration">2年</div>
+                    </div>
+                    <div class="experience-details">
+                        <h3>产品经理（兼交互）</h3>
+                        <p class="experience-company">杭州求是同创网络科技有限公司 · 微脉</p>
+                        <p class="experience-description">
+                            负责交易产品线和医患链接产品的规划与设计。主导交易系统重构、营销优惠券体系搭建、商家后台SaaS开发等核心业务。在医患链接方向，聚焦线上医疗咨询场景，深度剖析患者全生命周期健康需求，设计图文咨询与问答两条服务线，构建区域化医患连接通道，签约本地三甲医生实现线上问诊到线下就诊的完整闭环。
+                        </p>
+                        <div class="experience-achievements">
+                            <div class="achievement">
+                                <span class="achievement-value">↑ 42%</span>
+                                <span class="achievement-label">签约医生数</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-value">↑ 50%</span>
+                                <span class="achievement-label">患者端DAU</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-value">↑ 25%</span>
+                                <span class="achievement-label">图文咨询单量</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earlier Experience -->
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="experience-period">2014 - 2016</div>
+                    </div>
+                    <div class="experience-details">
+                        <h3 style="color: #D1D5DB; font-size: 48px; font-weight: 300; letter-spacing: 8px;">......</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="section-container">
+            <div class="section-label">Portfolio</div>
+            <h2 class="section-title">作品<span class="highlight">集</span></h2>
+            <div class="portfolio-grid">
+                <!-- Project 1: Yalla -->
+                <a href="yalla-case-study.html" class="portfolio-card yalla">
+                    <div>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">体验度量体系搭建</span>
+                            <span class="portfolio-tag">混合研究方法</span>
+                            <span class="portfolio-tag">数据驱动决策</span>
+                        </div>
+                        <h3>Yalla 全链路体验数字化治理与增长实战</h3>
+                        <p>基于混合研究方法的体验诊断与策略设计，搭建HEART/NPS体验度量体系。</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">↑ 12%</span>
+                            <span class="metric-label-small">VIP用户ARPU</span>
+                        </div>
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">↑ 96%</span>
+                            <span class="metric-label-small">引入期转化率</span>
+                        </div>
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">↓ 42%</span>
+                            <span class="metric-label-small">VIP流失率</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2: 居家护理 -->
+                <a href="home-care-service.html" class="portfolio-card homecare">
+                    <div>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">0-1 产品设计</span>
+                            <span class="portfolio-tag">服务设计</span>
+                            <span class="portfolio-tag">用户研究</span>
+                        </div>
+                        <h3>居家护理服务</h3>
+                        <p>探索"互联网+护理服务"新模式，通过服务设计思维构建连接护理供需双方的平台。</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">0→1</span>
+                            <span class="metric-label-small">产品设计</span>
+                        </div>
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">双端</span>
+                            <span class="metric-label-small">设计范围</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3: 纳里医生 -->
+                <a href="nali-health.html" class="portfolio-card doctor">
+                    <div>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">B端产品设计</span>
+                            <span class="portfolio-tag">可用性测试</span>
+                            <span class="portfolio-tag">设计迭代</span>
+                        </div>
+                        <h3>纳里医生</h3>
+                        <p>通过可用性验证驱动的设计迭代，将医生工作台SUS评分从68.5提升至84.1。</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">84.1</span>
+                            <span class="metric-label-small">SUS可用性评分</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 4: 微脉 -->
+                <a href="project-wemai-final.html" class="portfolio-card weimai">
+                    <div>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">交互设计</span>
+                            <span class="portfolio-tag">产品规划</span>
+                            <span class="portfolio-tag">医疗健康</span>
+                        </div>
+                        <h3>医患沟通平台（微脉）</h3>
+                        <p>深度剖析患者全生命周期健康需求，构建高效医患连接通道。</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">↑ 42%</span>
+                            <span class="metric-label-small">签约医生数</span>
+                        </div>
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">↑ 50%</span>
+                            <span class="metric-label-small">患者端DAU</span>
+                        </div>
+                        <div class="portfolio-metric">
+                            <span class="metric-value-small">↑ 25%</span>
+                            <span class="metric-label-small">咨询单量</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <div class="section-label">Get In Touch</div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>联系<span class="highlight">我</span></h3>
+                    <p class="contact-description">
+                        如果你需要一位资深的用户研究或体验设计师，我随时可以为你提供帮助。欢迎通过以下方式与我联系。
+                    </p>
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value link">490366451@qq.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">187 6716 5349</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">杭州，中国</div>
+                    </div>
+                </div>
+                <div class="qr-container">
+                    <div class="qr-box">
+                        <img src="images/IMG_5530.JPG" alt="微信二维码" style="width: 250px; height: 250px; object-fit: contain;">
+                        <div class="qr-label">微信二维码</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 蒋云凯. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
