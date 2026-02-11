@@ -38,6 +38,35 @@ git commit -m "your message"
 git push
 ```
 
+### 故障排除
+
+#### 部署未生效怎么办？
+
+如果推送代码后网站没有更新：
+
+1. **检查线上版本**
+   ```bash
+   curl -s https://kaysensei.com | grep -o '<title>.*</title>'
+   ```
+
+2. **手动触发重新部署**
+   ```bash
+   git commit --allow-empty -m "chore: trigger Cloudflare Pages redeploy"
+   git push
+   ```
+
+3. **检查部署状态**
+   - GitHub Deployments: https://github.com/jiangyksensei/resume-portfolio/deployments
+   - Cloudflare Pages Dashboard: https://dash.cloudflare.com
+
+4. **清除浏览器缓存**
+   - Mac: `Cmd + Shift + R` (硬刷新)
+   - Windows: `Ctrl + Shift + R` (硬刷新)
+
+#### 部署记录
+
+- **2026-02-11 下午**: 更新网站标题后自动部署未生效，通过空提交手动触发重新部署成功
+
 ## 重要说明
 
 ### 网站标题
