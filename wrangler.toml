@@ -1,5 +1,0 @@
-name = "resume-portfolio"
-compatibility_date = "2026-02-11"
-
-[site]
-bucket = "./"
