@@ -27,7 +27,33 @@
 
 ## 部署
 
-推送到 `main` 分支后，Cloudflare Pages 会自动部署。
+推送到 `main` 分支后，Cloudflare Pages 会自动部署（通常需要 1-3 分钟）。
+
+### Git 推送配置
+
+已配置 SSH 密钥认证，推送代码使用：
+```bash
+git add .
+git commit -m "your message"
+git push
+```
+
+## 重要说明
+
+### 网站标题
+- 当前标题：**蒋云凯-用户研究/体验设计师**
+- 更新日期：2026-02-11
+
+### 中国访问性
+- **托管平台**：Cloudflare Pages
+- **访问情况**：在中国大陆可能存在访问不稳定的情况
+- **原因**：Cloudflare IP 在部分地区/运营商可能被屏蔽
+- **测试工具**：
+  - [17CE 网站测速](https://www.17ce.com)
+  - [ViewDNS 防火墙测试](https://viewdns.info/chinesefirewall/)
+  - [China Firewall Test](https://www.chinafirewalltest.com)
+
+**注意**：如果遇到 `ERR_PROXY_CONNECTION_FAILED` 错误，通常是本地代理设置问题，需关闭代理或检查 VPN 设置。
 
 ## 项目文档
 
